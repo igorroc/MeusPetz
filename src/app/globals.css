@@ -36,6 +36,9 @@
 			#ffffff10,
 			#ffffff80
 		);
+
+		--scroll-bar-thumb: #ffffff80;
+		--scroll-bar-track: #ffffff10;
 	}
 }
 
