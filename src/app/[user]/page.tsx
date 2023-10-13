@@ -3,7 +3,7 @@ import styles from "./page.module.css"
 import Image from "next/image"
 import UserPhoto from "/public/img/igor.jpg"
 import Link from "next/link"
-import { TPets } from "../api/pets/route"
+import { TPet } from "@/models/Pet"
 
 type Props = {
 	params: {
@@ -14,10 +14,7 @@ type Props = {
 export default async function User(props: Props) {
 	const user = props.params.user
 
-	const pets: TPets[] = (await fetch("http://localhost:3000/api/pets").then((res) => {
-		console.log("pets:", res)
-		return res.json()
-	})) as TPets[]
+	const pets = (await fetch("http://localhost:3000/api/pets").then((res) => res.json())) as TPet[]
 
 	return (
 		<main className={styles.main}>

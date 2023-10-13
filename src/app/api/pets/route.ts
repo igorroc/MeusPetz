@@ -1,32 +1,19 @@
-export type TPets = {
-	name: string
-	photo: string
-	url: string
-}
+import { PETS } from "@/models/Pet"
+import { NextRequest } from "next/server"
 
-export async function GET(request: Request) {
-	const pets = [
-		{
-			name: "Grego",
-			photo: "/img/grego.png",
-			url: "/Igor/grego",
-		},
-		{
-			name: "Cole",
-			photo: "/img/cole.png",
-			url: "/Igor/cole",
-		},
-		{
-			name: "Edgar",
-			photo: "/img/edgar.png",
-			url: "/Igor/edgar",
-		},
-		{
-			name: "Rex",
-			photo: "/img/rex.png",
-			url: "/Igor/rex",
-		},
-	]
+export function GET(request: NextRequest) {
+	const searchParams = request.nextUrl.searchParams
+	const search = searchParams.get("search")
 
-	return Response.json(pets)
+	if (!search) {
+		return Response.json(PETS)
+	}
+
+	const foundPet = PETS.find((pet) => pet.id.includes(search))
+
+	if (!foundPet) {
+		return Response.json(null)
+	}
+
+	return Response.json(foundPet)
 }
