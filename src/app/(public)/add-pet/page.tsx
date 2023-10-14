@@ -117,7 +117,7 @@ export default function AddPet() {
 					<label htmlFor="isCastrated" className={styles.row}>
 						<input
 							type="radio"
-							name="isAdopted"
+							name="isCastrated"
 							id="isCastrated"
 							required
 							disabled={adding}
@@ -125,7 +125,7 @@ export default function AddPet() {
 						Sim, ele é castrado
 					</label>
 					<label htmlFor="isNotCastrated" className={styles.row}>
-						<input type="radio" name="isAdopted" id="isNotCastrated" />
+						<input type="radio" name="isCastrated" id="isNotCastrated" />
 						Não, ele não é castrado
 					</label>
 				</div>
