@@ -3,7 +3,7 @@
 	flex-direction: column;
 	gap: 1rem;
 	align-items: center;
-	padding: 6rem;
+	padding: 6rem 0;
 	min-height: 100vh;
 }
 
@@ -38,8 +38,9 @@
 	gap: 1rem;
 
 	align-items: flex-start;
-	width: 100%;
+	width: 95%;
 	max-width: var(--max-width);
+	margin: 0 auto;
 
 	.sectionTitle {
 		font-size: 1.2rem;
@@ -48,7 +49,7 @@
 }
 
 .scrollerWrapper {
-	width: 90%;
+	width: 100%;
 	max-width: var(--max-width);
 	max-height: 300px;
 	overflow: auto;
@@ -77,6 +78,13 @@
 
 .pet {
 	position: relative;
+	transition: all 0.2s ease-in-out;
+	border-radius: 1rem;
+	overflow: hidden;
+
+	--size: 10rem;
+	min-width: var(--size);
+	height: var(--size);
 
 	.petImage {
 		--size: 10rem;
@@ -89,8 +97,13 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(255, 255, 255, 0.1);
 		color: white;
 		padding: 0.5rem;
+		backdrop-filter: blur(0.5rem);
 	}
+}
+
+.pet:hover {
+	transform: scale(1.05);
 }
