@@ -14,9 +14,17 @@ type Props = {
 export default async function User(props: Props) {
 	const user = props.params.user
 	const APP_PRODUCTION = process.env.NODE_ENV === "production"
-	const API_URL = APP_PRODUCTION ? process.env.APP_URL_PRODUCTION : process.env.APP_URL_DEVELOPMENT
+	const API_URL = APP_PRODUCTION
+		? process.env.APP_URL_PRODUCTION
+		: process.env.APP_URL_DEVELOPMENT
 
-	const pets = (await fetch(`${API_URL}/api/pets`).then((res) => res.json())) as TPet[]
+	const pets = (await fetch(`${API_URL}/api/pets`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		cache: "no-cache",
+	}).then((res) => res.json())) as TPet[]
 
 	return (
 		<main className={styles.main}>
@@ -34,7 +42,7 @@ export default async function User(props: Props) {
 						<div className={styles.scrollerWrapper}>
 							<div className={styles.scroller}>
 								{pets.map((pet, index) => (
-									<Link href={pet.url} className={styles.pet} key={index}>
+									<Link href={pet._id} className={styles.pet} key={index}>
 										<div className={styles.petImage}>
 											{/* eslint-disable-next-line */}
 											<img

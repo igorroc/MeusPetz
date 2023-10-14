@@ -1,25 +1,41 @@
-import { PETS, uploadPetPhoto } from "@/models/Pet"
+import { uploadPetPhoto } from "@/models/Pet"
 import { NextRequest } from "next/server"
-import { ref, uploadBytes } from "firebase/storage"
-import { storage } from "@/firebase/config"
-import { addDocument } from "@/firebase/firestore/getData"
+import { addDocument, getCollection } from "@/firebase/firestore/getData"
 import idCleaner from "@/utils/clean_string"
 
-export function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
 	const searchParams = request.nextUrl.searchParams
 	const search = searchParams.get("search")
 
+	const collectionPets = await getCollection("pets")
+	const petsArray = collectionPets.result?.docs.map((doc) => doc.data())
+
 	if (!search) {
-		return Response.json(PETS)
+		return Response.json(petsArray, {
+			status: 200,
+			statusText: "Pets found",
+		})
 	}
 
-	const foundPet = PETS.find((pet) => pet.id.includes(search))
+	if (!petsArray)
+		return Response.json(null, {
+			status: 504,
+			statusText: "No pets found",
+		})
+
+	const foundPet = petsArray.find((pet) => pet._id == search)
 
 	if (!foundPet) {
-		return Response.json(null)
+		return Response.json(null, {
+			status: 404,
+			statusText: "Pet not found",
+		})
 	}
 
-	return Response.json(foundPet)
+	return Response.json(foundPet, {
+		status: 200,
+		statusText: "Pet found",
+	})
 }
 
 export async function POST(request: NextRequest) {
