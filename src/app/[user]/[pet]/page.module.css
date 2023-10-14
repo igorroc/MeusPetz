@@ -75,32 +75,32 @@
 		font-size: 0.8rem;
 		opacity: 0.5;
 	}
+}
 
-	.actions {
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-		margin-left: auto;
-	}
+.actions {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	margin-left: auto;
+}
 
-	.actions a {
-		display: flex;
-		--size: 2.5rem;
-		font-size: 1.5rem;
-		align-items: center;
-		justify-content: center;
-		width: var(--size);
-		height: var(--size);
-		border-radius: 5px;
-		background-color: var(--color-primary);
-		color: var(--color-white);
+.actions a {
+	display: flex;
+	--size: 2.5rem;
+	font-size: 1.5rem;
+	align-items: center;
+	justify-content: center;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 5px;
+	background-color: var(--color-primary);
+	color: var(--color-white);
 
-		transition: all 0.2s ease;
-	}
+	transition: all 0.2s ease;
+}
 
-	.actions a:hover {
-		opacity: 0.8;
-	}
+.actions a:hover {
+	opacity: 0.8;
 }
 
 .table {
