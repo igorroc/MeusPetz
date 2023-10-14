@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 
 	return {
-		title: `Profissional não encontrado`,
+		title: `Pet não encontrado`,
 	}
 }
 
