@@ -52,6 +52,7 @@ export const PETS: TPet[] = [
 		photo: "/img/jollie.jpg",
 		url: "/Igor/jollie",
 		specie: "Gato",
+		pageAccentColor: "#39B9E1",
 		breed: "SRD",
 		address: "R. A, 100 - Pontal, Ilhéus - BA",
 		birthDate: "04/10/2018",
