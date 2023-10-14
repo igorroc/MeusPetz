@@ -5,14 +5,7 @@ import UserPhoto from "/public/img/igor.jpg"
 import Link from "next/link"
 import { TPet } from "@/models/Pet"
 
-type Props = {
-	params: {
-		user: string
-	}
-}
-
-export default async function User(props: Props) {
-	const user = props.params.user
+export default async function User() {
 	const APP_PRODUCTION = process.env.NODE_ENV === "production"
 	const API_URL = APP_PRODUCTION
 		? process.env.APP_URL_PRODUCTION
@@ -32,7 +25,7 @@ export default async function User(props: Props) {
 				<div className={styles.userPhoto}>
 					<Image src={UserPhoto} alt="Foto do usuário" className={styles.img} />
 				</div>
-				<span className={styles.userName}>Olá, {user}</span>
+				<span className={styles.userName}>Olá, Igor</span>
 			</div>
 
 			<section className={styles.section}>
