@@ -34,19 +34,20 @@ export default async function User() {
 						<span className={styles.sectionTitle}>Meus Petz ({pets.length})</span>
 						<div className={styles.scrollerWrapper}>
 							<div className={styles.scroller}>
-								{pets.map((pet, index) => (
-									<Link href={pet._id} className={styles.pet} key={index}>
-										<div className={styles.petImage}>
-											{/* eslint-disable-next-line */}
-											<img
-												className={styles.img}
-												src={pet.photo}
-												alt="Foto do pet"
-											/>
-										</div>
-										<span className={styles.petName}>{pet.name}</span>
-									</Link>
-								))}
+								{pets.length >= 0 &&
+									pets.map((pet, index) => (
+										<Link href={pet._id} className={styles.pet} key={index}>
+											<div className={styles.petImage}>
+												{/* eslint-disable-next-line */}
+												<img
+													className={styles.img}
+													src={pet.photo}
+													alt="Foto do pet"
+												/>
+											</div>
+											<span className={styles.petName}>{pet.name}</span>
+										</Link>
+									))}
 							</div>
 						</div>
 					</>
