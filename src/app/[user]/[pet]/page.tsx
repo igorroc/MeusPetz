@@ -6,11 +6,43 @@ import { AiOutlineWhatsApp, AiFillPhone } from "react-icons/ai"
 import Link from "next/link"
 import CustomMap from "@/components/CustomMap"
 import { calculateAge, isBirthdayToday } from "@/utils/getDate"
+import { Metadata } from "next"
 
 type Props = {
 	params: {
 		user: string
 		pet: string
+	}
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const petId = params.pet
+
+	const pet = (await fetch(`http://localhost:3000/api/pets?search=${petId}`, {
+		cache: "no-cache",
+	})
+		.then((res) => res.json())
+		.catch((err) => {
+			console.error("ERROR ------")
+		})) as TPet
+
+	if (pet) {
+		const fullPath = `https://meuspetz.com.br${pet.photo}`
+
+		return {
+			title: `Perfil de ${pet.name}`,
+			openGraph: {
+				images: [fullPath],
+			},
+			twitter: {
+				card: "summary_large_image",
+				images: [fullPath],
+			},
+		}
+	}
+
+	return {
+		title: `Profissional não encontrado`,
 	}
 }
 

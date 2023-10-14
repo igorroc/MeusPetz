@@ -8,7 +8,10 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-	title: "Crie Perfis de Pets Personalizados - Meus Petz",
+	title: {
+		default: "Crie Perfis de Pets Personalizados - Meus Petz",
+		template: "%s - Meus Petz - Crie Perfis de Pets Personalizados",
+	},
 	description:
 		"Crie perfis informativos e bonitos para seus pets e obtenha coleiras com QR code personalizado. Encontre pets perdidos e conecte-se com outros amantes de animais.",
 }
