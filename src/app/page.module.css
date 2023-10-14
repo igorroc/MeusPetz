@@ -6,3 +6,23 @@
 	padding: 6rem;
 	min-height: 100vh;
 }
+
+.form {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.form input {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.form button {
+	padding: 0.5rem 1rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: var(--color-primary);
+	cursor: pointer;
+}
