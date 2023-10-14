@@ -78,14 +78,15 @@
 
 	.actions {
 		display: flex;
+		flex-direction: row;
 		gap: 1rem;
 		margin-left: auto;
 	}
 
 	.actions a {
+		display: flex;
 		--size: 2.5rem;
 		font-size: 1.5rem;
-		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: var(--size);
