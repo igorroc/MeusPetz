@@ -13,8 +13,10 @@ type Props = {
 
 export default async function User(props: Props) {
 	const user = props.params.user
+	const APP_PRODUCTION = process.env.NODE_ENV === "production"
+	const API_URL = APP_PRODUCTION ? process.env.APP_URL_PRODUCTION : process.env.APP_URL_DEVELOPMENT
 
-	const pets = (await fetch("http://localhost:3000/api/pets").then((res) => res.json())) as TPet[]
+	const pets = (await fetch(`${API_URL}/api/pets`).then((res) => res.json())) as TPet[]
 
 	return (
 		<main className={styles.main}>
