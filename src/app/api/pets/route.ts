@@ -3,6 +3,7 @@ import { NextRequest } from "next/server"
 import { ref, uploadBytes } from "firebase/storage"
 import { storage } from "@/firebase/config"
 import { addDocument } from "@/firebase/firestore/getData"
+import idCleaner from "@/utils/clean_string"
 
 export function GET(request: NextRequest) {
 	const searchParams = request.nextUrl.searchParams
@@ -31,7 +32,16 @@ export async function POST(request: NextRequest) {
 	const petPhotoPath = await uploadPetPhoto(file)
 
 	const pet = {
+		_id: idCleaner(data.get("name") as string),
 		name: data.get("name") as string,
+		specie: data.get("specie") as string,
+		breed: data.get("breed") as string,
+		gender: data.get("gender"),
+		isAdopted: data.get("isAdopted") === "true",
+		isCastrated: data.get("isCastrated") === "true",
+		birthDate: data.get("birthDate") as string,
+		address: data.get("address") as string,
+		pageAccentColor: data.get("pageAccentColor") as string,
 		photo: petPhotoPath,
 	}
 
