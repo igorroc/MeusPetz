@@ -17,8 +17,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const petId = params.pet
+	const APP_PRODUCTION = process.env.NODE_ENV === "production"
+	const API_URL = APP_PRODUCTION ? process.env.APP_URL_PRODUCTION : process.env.APP_URL_DEVELOPMENT
 
-	const pet = (await fetch(`http://localhost:3000/api/pets?search=${petId}`, {
+	const pet = (await fetch(`${API_URL}/api/pets?search=${petId}`, {
 		cache: "no-cache",
 	})
 		.then((res) => res.json())
