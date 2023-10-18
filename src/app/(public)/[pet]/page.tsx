@@ -9,6 +9,8 @@ import { calculateAge } from "@/utils/getDate"
 import { Metadata } from "next"
 
 import Image_404 from "@/../public/img/404_2.jpg"
+import BirthDayPopPup from "@/components/BirthDayPopUp"
+import BirthDayPopUp from "@/components/BirthDayPopUp"
 
 type Props = {
 	params: {
@@ -96,6 +98,7 @@ export default async function User(props: Props) {
 				} as React.CSSProperties
 			}
 		>
+			<BirthDayPopUp pet={pet} />
 			<div className={styles.petTitle}>
 				<div className={styles.petPhoto}>
 					{/* eslint-disable-next-line */}

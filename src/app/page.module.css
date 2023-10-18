@@ -31,12 +31,12 @@
 	max-width: var(--max-width);
 	max-height: 300px;
 	overflow: auto;
+}
 
-	.scroller {
-		display: flex;
-		gap: 1rem;
-		padding: 1rem;
-	}
+.scroller {
+	display: flex;
+	gap: 1rem;
+	padding: 1rem;
 }
 
 .scrollerWrapper::-webkit-scrollbar {
@@ -69,17 +69,17 @@
 		width: var(--size);
 		height: var(--size);
 	}
+}
 
-	.petName {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		background-color: rgba(255, 255, 255, 0.1);
-		color: white;
-		padding: 0.5rem;
-		backdrop-filter: blur(0.5rem);
-	}
+.petName {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white;
+	padding: 0.5rem;
+	backdrop-filter: blur(0.5rem);
 }
 
 .pet:hover {
